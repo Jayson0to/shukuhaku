@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  checkin: 2023-06-29
+  ckeckout: 2023-06-29
+  people: 1
+
+two:
+  user_id: 1
+  checkin: 2023-06-29
+  ckeckout: 2023-06-29
+  people: 1

@@ -1,0 +1,16 @@
+<h1>プロフィール編集</h1>
+<%= form_with model: @user do |f| %>
+   <h3><%= f.label :image , "アイコン"%></h3>
+   <% if @user.image? %>
+      <%= image_tag @user.image.url %>
+   <% else %>
+      <%= image_tag "/assets/default.jpg", :size => '100x100' %>
+   <% end %>
+   <button type="button" class="btn btn-outline-secondary rounded-pill"><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></button>
+   <h3><%= f.label :name ,"名前"%></h3>
+   <p><%= f.text_field :name %></p>
+   <h3><%= f.label :introduce ,"自己紹介"%></h3>
+   <p><%= f.text_area :introduce %></p>
+   <%= f.submit "更新" %>
+<%end %>
+<%=link_to '戻る', :back %>

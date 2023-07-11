@@ -1,0 +1,13 @@
+<h1>プロフィール</h1>
+  <h3>アイコン</h3>
+    <% if @user.image? %>
+      <%= image_tag @user.image.url %>
+      <% else %>
+        <%= image_tag "/assets/default.jpg", :size => '100x100' %>
+      <% end %>
+  <h3>名前</h3>
+    <p><%= @user.name %></p>
+    <h3>自己紹介</h3>
+    <p><%= @user.introduce %></p>
+    <%= link_to 'アカウント情報' , '/accounts'%>
+    <%= link_to "編集", [:edit, @user] %>

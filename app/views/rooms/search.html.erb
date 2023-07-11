@@ -1,0 +1,32 @@
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>施設紹介</th>
+      <th>料金</th>
+      <th>住所</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<tbody>
+  <h2>検索結果</h2>
+  <p><%= @results.count %>件の施設が見つかりました。</p>
+    <% @results.each do |room| %>
+      <tr>
+        <td> <% if room.image? %>
+      <%=image_tag room.image.to_s%>
+      <% else%>
+        <%= image_tag "/assets/room.jpg", :size => '100x100' %>
+      <%end%>
+      </td>
+        <td><%= room.name %></td>
+        <td><%= room.introduction %></td>
+        <td><%= room.price %></td>
+        <td><%= room.address %></td>
+        <td><%=link_to '詳細',room %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%=link_to '戻る', :back, class: "back_buttom"%>

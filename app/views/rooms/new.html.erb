@@ -1,0 +1,27 @@
+<h3>新規登録</h3>
+
+  <%= form_with model: @room do |f| %>
+    <p><%= f.label :name ,"施設名"%></p>
+    <p><%= f.text_field :name, :size=>"60", placeholder:"施設名を入力してください。" %></p>
+
+    <p><%= f.label :introduction ,"施設詳細"%></p>
+    <p><%= f.text_area :introduction, :size=>"60" ,placeholder:"詳細を入力してください。" %></p>
+
+    <p><%= f.label :price ,"料金"%></p>
+    <p><%= f.text_field :price, :size=>"60", placeholder:"料金を入力してください。" %></p>
+
+    <p><%= f.label :address ,"住所"%></p>
+    <p><%= f.text_field :address, :size=>"60", placeholder:"住所を入力してください。" %></p>
+
+    <p><%= f.label :image ,"施設画像"%></p>
+      <% if @room.image? %>
+        <%= image_tag @room.image.url %>
+      <% else %>
+        <%= image_tag "/assets/room.jpg", :size => '100x100' %>
+      <% end %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    <button type="button" class="btn btn-outline-secondary rounded-pill"><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></button>
+    <p><input type="submit" value="保存" class="save_button"></p>
+  <% end %>
+  <%=link_to '戻る', :back, class: "back_buttom"%>
+

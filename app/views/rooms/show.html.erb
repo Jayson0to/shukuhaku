@@ -1,0 +1,43 @@
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>施設詳細</th>
+      <th>料金</th>
+      <th>住所</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <% if @room.image? %>
+          <%= image_tag @room.image.to_s %>
+        <% else %>
+          <%= image_tag "/assets/room.jpg", size: '100x100' %>
+        <% end %>
+      </td>
+      <td><%= @room.name %></td>
+      <td><%= @room.introduction %></td>
+      <td><%= @room.price %></td>
+      <td><%= @room.address %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= form_with(model: [@room, @reservation], url: room_reservations_path(@room)) do |f| %>
+
+  <div>
+  <%= render "shared/error", obj: @reservation %>
+    <p><%= f.label :checkin, "チェックイン" %></p>
+    <p><%= f.date_field :checkin %></p>
+    <p><%= f.label :checkout, "チェックアウト" %></p>
+    <p><%= f.date_field :checkout %></p>
+    <p><%= f.label :people, "人数" %></p>
+    <p><%= f.number_field :people %></p>
+    <%= f.hidden_field :user_id , value:current_user.id%>
+    <p><%= f.submit "予約確認" %></p>
+  </div>
+<% end %>
+
+<%= link_to '戻る', :back, class: "back_button" %>

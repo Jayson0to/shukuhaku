@@ -1,0 +1,35 @@
+<!-- app/views/users/reservation.html.erb -->
+<h1><%= current_user.name %>の予約済み施設一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>施設詳細</th>
+      <th>料金</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>予約確定時間</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <% room = reservation.room %>
+      <tr>
+        <td>
+          <% if room.image? %>
+            <%= image_tag room.image.to_s %>
+          <% else %>
+            <%= image_tag "room.jpg", size: '100x100' %>
+          <% end %>
+        </td>
+        <td><%= room.name %></td>
+        <td><%= room.introduction %></td>
+        <td><%= reservation.result_price %></td>
+        <td><%= reservation.checkin %></td>
+        <td><%= reservation.checkout %></td>
+        <td><%= reservation.updated_at.to_s(:datetime_jp) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

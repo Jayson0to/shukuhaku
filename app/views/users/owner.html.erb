@@ -1,0 +1,26 @@
+<h1><%= current_user.name%>の登録済み施設一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>施設詳細</th>
+      <th>料金</th>
+      <th>住所</th>
+    </tr>
+  <tbody>
+  <% @owners.each do |owner| %>
+      <tr>
+      <td>
+      <% if owner.image? %>
+      <%=image_tag owner.image.to_s%>
+      <% else%>
+        <%= image_tag "/assets/room.jpg", :size => '100x100' %>
+      <%end%>
+      </td>
+        <td><%= owner.name %></td>
+        <td><%= owner.introduction %></td>
+        <td><%= owner.price%></td>
+        <td><%= owner.address%></td>
+        <%end%>
+</table>
