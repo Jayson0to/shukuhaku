@@ -4,9 +4,10 @@
     <tr>
       <th>施設画像</th>
       <th>施設名</th>
-      <th>施設詳細</th>
+      <th>紹介文</th>
       <th>料金</th>
-      <th>住所</th>
+      <th>作成日</th>
+      <th>
     </tr>
   <tbody>
   <% @owners.each do |owner| %>
@@ -21,6 +22,6 @@
         <td><%= owner.name %></td>
         <td><%= owner.introduction %></td>
         <td><%= owner.price%></td>
-        <td><%= owner.address%></td>
+        <td><%= owner.updated_at.to_s(:datetime_jp) %></td>
         <%end%>
 </table>

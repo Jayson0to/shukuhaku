@@ -13,5 +13,16 @@ class Reservation < ApplicationRecord
       errors.add(:checkout, "はチェックインより前の日付にできません。")
       end
     end
-  end
+    
+    def checkin_before_today
+      if checkin.present? && checkin < Date.today
+        errors.add(:checkin, "は過去の日付にできません。")
+      end
+    end
 
+    def checkout_before_today
+      if checkout.present? && checkout < Date.today
+        errors.add(:checkout, "は過去の日付にできません。")
+      end
+    end
+  end

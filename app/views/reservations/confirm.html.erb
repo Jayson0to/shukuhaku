@@ -5,7 +5,7 @@
   <li>チェックアウト: <%= @reservation.checkout %></li>
   <li>宿泊日数: <%= @nights %>泊</li>
   <li>人数: <%= @reservation.people %></li>
-  <li>支払い金額: <%= @result_price %>円</li> 
+  <li>支払い金額: <%= @result_price %>円</li>
 </ul>
 <%= form_with(model: [@room, @reservation], url:save_reservations_path ) do |f| %>
   <%= f.hidden_field :checkin %>
