@@ -19,7 +19,7 @@
         <%= image_tag "/assets/room.jpg", :size => '100x100' %>
       <%end%>
       </td>
-        <td><%= owner.name %></td>
+        <td><%= link_to owner.name ,room_path(owner.id) %></td>
         <td><%= owner.introduction %></td>
         <td><%= owner.price%></td>
         <td><%= owner.updated_at.to_s(:datetime_jp) %></td>

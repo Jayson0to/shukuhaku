@@ -5,6 +5,8 @@ class Reservation < ApplicationRecord
   validates :checkout, presence: true
   validates :people, presence: true, numericality: { greater_than: 0 }
   validate :checkin_before_checkout, on: :create
+  validate :checkin_before_today ,on: :create
+  validate :checkout_before_today ,on: :create
 
   private
 
