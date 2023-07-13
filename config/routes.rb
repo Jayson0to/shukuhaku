@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'posts#index'
+  root 'rooms#index'
   get 'rooms/index'
   get 'rooms/search' => 'rooms#search'
   get 'reservations/confirm' => 'reservations#confirm'
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   end
 
   get '/mypage' => 'users#mypage'
-  get 'posts/index'
 
   get 'users/:id/accounts' => 'users#accounts'
   get '/accounts' => 'users#accounts'

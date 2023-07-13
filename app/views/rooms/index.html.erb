@@ -1,50 +1,35 @@
 <h1>施設検索</h1>
 <%= search_form_for @q, url: rooms_search_path do |f| %>
-  <%= f.label :address_cont, 'エリア検索' %>
-  <%= f.radio_button :address_cont, "東京" %> 東京
-  <%= f.radio_button :address_cont, "大阪" %> 大阪
-  <%= f.radio_button :address_cont, "京都" %> 京都
-  <%= f.radio_button :address_cont, "札幌" %> 札幌
-  <%= f.submit '検索' %>
+  <h2><%= f.label :address_cont, 'エリア検索' %></h2>
+  <div class="image-and-text">
+   <%= link_to rooms_search_path(q: { address_cont: "東京" }) do %>
+    <%= image_tag  "/assets/tokyo.jpg", size: "200x200" , alt: "東京" %>
+     <span class="text">東京</span>
+  <% end %>
+  </div>
+  <div class="image-and-text">
+     <%= link_to rooms_search_path(q: { address_cont: "大阪" }) do %>
+    <%= image_tag  "/assets/osaka.jpg", size: "200x200" , alt: "大阪" %>
+     <span class="text">大阪</span>
+  <% end %>
+   </div>
+  <div class="image-and-text">
+    <%= link_to rooms_search_path(q: { address_cont: "京都" }) do %>
+    <%= image_tag  "/assets/kyoto.jpg", size: "200x200" , alt: "京都" %>
+     <span class="text">京都</span>
+  <% end %>
+   </div>
+  <div class="image-and-text">
+       <%= link_to rooms_search_path(q: { address_cont: "札幌" }) do %>
+    <%= image_tag  "/assets/sapporo.jpg", size: "200x200" , alt: "札幌" %>
+     <span class="text">札幌</span>
+  <% end %>
+   </div>
 <% end %>
 
 <%= search_form_for @q, url: rooms_search_path do |f| %>
-  <%= f.label :name_or_introduction_cont, '施設名検索' %>
+  <h2><%= f.label :name_or_introduction_cont, '施設名検索' %></h2>
   <%= f.search_field :name_or_introduction_cont %>
 
   <%= f.submit '検索' %>
 <% end %>
-
-<h1>施設一覧</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>施設画像</th>
-      <th>施設名</th>
-      <th>施設詳細</th>
-      <th>料金</th>
-      <th>住所</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @rooms.each do |room| %>
-      <tr>
-        <td>
-          <% if room.image? %>
-            <%= image_tag room.image.to_s %>
-          <% else %>
-            <%= image_tag "/assets/room.jpg", size: '100x100' %>
-          <% end %>
-        </td>
-        <td><%= room.name %></td>
-        <td><%= room.introduction %></td>
-        <td><%= room.price %></td>
-        <td><%= room.address %></td>
-        <td><%= link_to '詳細', room %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to '戻る', :back, class: "back_button" %>

@@ -14,7 +14,37 @@
  *= require_self
  */
 
+ .image-and-text {
+  position: relative;
+  display: inline-block;
+}
 
+.image {
+  display: block;
+}
+
+.text {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  padding: 5px;
+  color: #fff;
+}
+.link_custom{
+  color: white;
+  text-decoration: none;
+}
+
+
+.navbar {
+  background-color: #1c1d3b;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;}
 
 .dropdown__lists {
   display: none;/*デフォルトでは非表示の状態にしておく*/

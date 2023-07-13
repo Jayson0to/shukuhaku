@@ -12,8 +12,10 @@
 
   <body>
   <header>
-    <nav>
-      <%= link_to 'HOME' , '/posts/index'%>
+    <nav class= "navbar" >
+      <%= link_to '/rooms/index' do %>
+      <%= image_tag  "/assets/logo.png", size: "300x50" , alt: "東京" %>
+      <% end %>
       <% if user_signed_in? %><%# ログイン中のみ表示%>
       <div class="gnavi__wrap">
         <ul class="gnavi__lists">
@@ -34,8 +36,8 @@
               </ul>
           </li>
       <% else %><%# ログアウト中に表示 %>
-        <%= link_to 'ログイン' , '/users/sign_in'%>
-        <%= link_to '新規登録' , '/users/sign_up'%>
+        <%= link_to 'ログイン' , '/users/sign_in', class: "link_custom"%>
+        <%= link_to '新規登録' , '/users/sign_up', class: "link_custom"%>
       <% end %>
       <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>">
