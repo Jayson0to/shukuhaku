@@ -1,0 +1,20 @@
+<h1>予約確認</h1>
+<p>予約詳細</p>
+<ul>
+  <li>チェックイン: <%= @reservation.checkin %></li>
+  <li>チェックアウト: <%= @reservation.checkout %></li>
+  <li>宿泊日数: <%= @nights %>泊</li>
+  <li>人数: <%= @reservation.people %></li>
+  <li>支払い金額: <%= @result_price %>円</li>
+</ul>
+<%= form_with(model: [@room, @reservation], url:save_reservations_path ) do |f| %>
+  <%= f.hidden_field :checkin %>
+  <%= f.hidden_field :checkout %>
+  <%= f.hidden_field :people %>
+  <%= f.hidden_field :room_id, value:@room_id%>
+  <%= f.hidden_field :user_id , value:current_user.id%>
+  <%= f.hidden_field :result_price , value:@result_price%>
+  <%= f.submit "予約する" %>
+<% end %>
+
+<%=link_to '戻る' ,room_path(@room_id)%>

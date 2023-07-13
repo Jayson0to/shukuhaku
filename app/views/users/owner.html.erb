@@ -1,0 +1,27 @@
+<h1><%= current_user.name%>の登録済み施設一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>料金</th>
+      <th>作成日</th>
+      <th>
+    </tr>
+  <tbody>
+  <% @owners.each do |owner| %>
+      <tr>
+      <td>
+      <% if owner.image? %>
+      <%=image_tag owner.image.to_s%>
+      <% else%>
+        <%= image_tag "/assets/room.jpg", :size => '100x100' %>
+      <%end%>
+      </td>
+        <td><%= link_to owner.name ,room_path(owner.id) %></td>
+        <td><%= owner.introduction %></td>
+        <td><%= owner.price%></td>
+        <td><%= owner.updated_at.to_s(:datetime_jp) %></td>
+        <%end%>
+</table>

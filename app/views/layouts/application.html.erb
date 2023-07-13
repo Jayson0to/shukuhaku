@@ -11,6 +11,41 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+    <nav class= "navbar" >
+      <%= link_to '/rooms/index' do %>
+      <%= image_tag  "/assets/logo.png", size: "300x50" , alt: "東京" %>
+      <% end %>
+      <% if user_signed_in? %><%# ログイン中のみ表示%>
+      <div class="gnavi__wrap">
+        <ul class="gnavi__lists">
+          <li class="gnavi__list">
+            <p><%= current_user.name %> ▼</p>
+              <% if current_user.image? %>
+                <%= image_tag current_user.image.url %>
+              <% else %>
+                <%= image_tag "/assets/default.jpg", :size => '40x40' %>
+              <% end %>
+              <ul class="dropdown__lists">
+                <li class="dropdown__list"><%= link_to '施設登録' , '/rooms/new'%>
+                <li class="dropdown__list"><%= link_to '登録済み施設一覧' , '/users/owner'%>
+                <li class="dropdown__list"><%= link_to '予約済み施設一覧' , '/users/reservations'%>
+                <li class="dropdown__list"><%= link_to 'アカウント情報' , '/accounts'%></li>
+                <li class="dropdown__list"><%= link_to 'プロフィール情報' , '/mypage'%></li>
+                <li class="dropdown__list"><%= link_to 'ログアウト', destroy_user_session_path,class: 'dropdown-item',method: :delete%></li>
+              </ul>
+          </li>
+      <% else %><%# ログアウト中に表示 %>
+        <%= link_to 'ログイン' , '/users/sign_in', class: "link_custom"%>
+        <%= link_to '新規登録' , '/users/sign_up', class: "link_custom"%>
+      <% end %>
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+    </nav>
+      <%= yield %>
+      </header>
   </body>
-</html>
+  </html>

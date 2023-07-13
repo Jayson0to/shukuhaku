@@ -13,3 +13,89 @@
  *= require_tree .
  *= require_self
  */
+
+ .image-and-text {
+  position: relative;
+  display: inline-block;
+}
+
+.image {
+  display: block;
+}
+
+.text {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  padding: 5px;
+  color: #fff;
+}
+.link_custom{
+  color: white;
+  text-decoration: none;
+}
+
+
+.navbar {
+  background-color: #1c1d3b;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;}
+
+.dropdown__lists {
+  display: none;/*デフォルトでは非表示の状態にしておく*/
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  left: 0;
+}
+.gnavi__list:hover .dropdown__lists {
+  display: block;/*Gナビメニューにホバーしたら表示*/
+}
+.dropdown__list {
+  background-color: blue;
+  height: 20px;
+  transition: all .3s;
+  position: relative;
+}
+.dropdown__list:not(:first-child)::before{
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #3492d1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.dropdown__list:hover {
+  background-color: gray
+}
+.dropdown__list a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+li{
+  list-style:none;
+}
+
+
+table th {
+  padding: 10px 20px;
+}
+
+table td {
+  padding: 10px 20px;
+}
+
+.notice {
+  padding: 5px;
+}

@@ -1,0 +1,35 @@
+<h1>施設検索</h1>
+<%= search_form_for @q, url: rooms_search_path do |f| %>
+  <h2><%= f.label :address_cont, 'エリア検索' %></h2>
+  <div class="image-and-text">
+   <%= link_to rooms_search_path(q: { address_cont: "東京" }) do %>
+    <%= image_tag  "/assets/tokyo.jpg", size: "200x200" , alt: "東京" %>
+     <span class="text">東京</span>
+  <% end %>
+  </div>
+  <div class="image-and-text">
+     <%= link_to rooms_search_path(q: { address_cont: "大阪" }) do %>
+    <%= image_tag  "/assets/osaka.jpg", size: "200x200" , alt: "大阪" %>
+     <span class="text">大阪</span>
+  <% end %>
+   </div>
+  <div class="image-and-text">
+    <%= link_to rooms_search_path(q: { address_cont: "京都" }) do %>
+    <%= image_tag  "/assets/kyoto.jpg", size: "200x200" , alt: "京都" %>
+     <span class="text">京都</span>
+  <% end %>
+   </div>
+  <div class="image-and-text">
+       <%= link_to rooms_search_path(q: { address_cont: "札幌" }) do %>
+    <%= image_tag  "/assets/sapporo.jpg", size: "200x200" , alt: "札幌" %>
+     <span class="text">札幌</span>
+  <% end %>
+   </div>
+<% end %>
+
+<%= search_form_for @q, url: rooms_search_path do |f| %>
+  <h2><%= f.label :name_or_introduction_cont, '施設名検索' %></h2>
+  <%= f.search_field :name_or_introduction_cont %>
+
+  <%= f.submit '検索' %>
+<% end %>
